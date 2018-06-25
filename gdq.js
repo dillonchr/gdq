@@ -1,7 +1,6 @@
 const domget = require('@dillonchr/domget');
 const moment = require('moment');
 const SCHEDULE_URL = 'https://gamesdonequick.com/schedule';
-const getLocalMoment = d => moment(d).utcOffset(`-0${new Date().getMonth() ? 5 : 6}:00`);
 
 module.exports = (callback) => {
     domget(SCHEDULE_URL, (err, dom) => {
@@ -13,7 +12,7 @@ module.exports = (callback) => {
                     const tds = row.querySelectorAll('td');
                     if (tds.length === 4) {
                         return {
-                            start: getLocalMoment(tds[0].text.trim()),
+                            start: moment(tds[0].text.trim()),
                             title: tds[1].text.trim(),
                             runners: tds[2].text.trim()
                         };
@@ -41,8 +40,8 @@ module.exports = (callback) => {
                                         return sum + count;
                                 }
                             }, 0);
-                        game.ends = getLocalMoment(game.start).add(estimate, 's');
-                        game.done = getLocalMoment().isAfter(game.ends);
+                        game.ends = moment(game.start).add(estimate, 's');
+                        game.done = moment().isAfter(game.ends);
                     }
                     return schedule;
                 }, []);
