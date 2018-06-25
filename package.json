@@ -1,6 +1,6 @@
 {
   "name": "@dillonchr/gdq",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "gdq schedule parser",
   "main": "gdq.js",
   "scripts": {
