@@ -1,6 +1,6 @@
 const domget = require('@dillonchr/domget');
 const moment = require('moment');
-const SCHEDULE_URL = 'https://gamesdonequick.com/schedule';
+const SCHEDULE_URL = 'https://gamesdonequick.com/schedule/';
 
 module.exports = (callback) => {
     domget(SCHEDULE_URL, (err, dom) => {
